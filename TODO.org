@@ -1,0 +1,7 @@
+* Todos
+** TODO  css neo4j browser                      <2016-11-30 Wed 19:59>
+*** .animate-drawer
+https://github.com/neo4j/neo4j-browser/blob/c463dfa6948e567dc103ba06a503e487fca5ab43/app/styles/drawer.styl#L371
+
+
+  Link: file:~/gits/data-navigator/src/clj/data_navigator/css.clj

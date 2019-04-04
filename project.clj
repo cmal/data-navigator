@@ -5,6 +5,9 @@
                  ;; [reagent-utils "0.2.0"]
                  [garden "1.3.2"]
                  ;; [cljsjs/react-bootstrap "0.30.6-0"]
+                 [cljsjs/react-with-addons "15.4.0-0"]
+                 ;; [lein-less "1.7.5"]
+                 [lein-sass "0.4.0"]
                  [devcards "0.2.2" :exclusions [cljsjs/react]]]
 
   :min-lein-version "2.5.3"
@@ -12,7 +15,7 @@
   :source-paths ["src/clj"]
 
   :plugins [[lein-cljsbuild "1.1.4"]
-            [lein-garden "0.2.8"]]
+            [lein-garden "0.3.0"]]
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled"
                                     "target"
@@ -27,6 +30,15 @@
                      :compiler     {:output-to     "resources/public/css/screen.css"
                                     :pretty-print? true}}]}
 
+  ;; :less {:source-paths ["src/less"]
+  ;;        ;; :target-path "target/public/css"
+  ;;        :target-path "resources/public/css"
+  ;;        }
+
+  :sass {:src "src/sass"
+         :output-directory "resources/public/css"}
+
+  :hooks [leiningen.less]
   
   :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
 
@@ -43,6 +55,7 @@
     :repl-options {; for nREPL dev you really need to limit output
                    :init (set! *print-length* 50)
                    :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
+    :source-paths ["src/cljs" "dev"]
     }}
 
   :cljsbuild
@@ -50,8 +63,7 @@
    [{:id           "dev"
      :source-paths ["src/cljs"]
      :figwheel     {
-                    ;; :on-jsload "data-navigator.core/reload"
-                    :on-jsload "data-navigator.core/on-js-reload"
+                    :on-jsload "data-navigator.core/reload"
                     }
      :compiler     {:main                 data-navigator.core
                     :optimizations        :none

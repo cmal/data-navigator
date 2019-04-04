@@ -27,15 +27,20 @@
 (def left-bar-bottom-items ["About" "Settings"])
 
 (defn page [ratom]
-  [:p "dsafsf"]
-  [:div {:id "left-bar"}
-   [:div {:id "nav"}
-    [:ul {:class "nav list-group"}
-     (for [item left-bar-top-items]
-       ^{:key item} [:li item])]
-    [:ul {:class "nav bottom"}
-     (for [item left-bar-bottom-items]
-       ^{:key item} [:li item])]]])
+  [:div {:id "container"}
+   [:div {:id "leftbar"}
+    [:div {:id "nav"}
+     [:ul {:class "nav list-group"}
+      (for [item left-bar-top-items]
+        ^{:key item} [:li item])]
+     [:ul {:class "nav bottom"}
+      (for [item left-bar-bottom-items]
+        ^{:key item} [:li item])]]]
+
+   [:div {:id "drawer"}
+    [:div {:class "switch"}
+     [:div {:class "inner"}]]]]
+  )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
